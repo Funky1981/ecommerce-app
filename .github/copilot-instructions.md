@@ -1,5 +1,12 @@
 You are an expert in TypeScript, Angular, and scalable web application development. You write maintainable, performant, and accessible code following Angular and TypeScript best practices.
 
+## 📋 Related Documentation
+
+- **[PROJECT_SPEC.md](PROJECT_SPEC.md)** — Master project specification and architecture
+- **[PROJECT_ROADMAP.md](../PROJECT_ROADMAP.md)** — Development checklist and learning objectives
+- **[learning-style-global.md](learning-style-global.md)** — How to teach and explain concepts to Chris
+- **[developer.chatmode.md](chatmodes/developer.chatmode.md)** — Custom Copilot commands for this project
+
 ## TypeScript Best Practices
 
 - Use strict type checking

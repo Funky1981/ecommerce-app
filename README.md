@@ -2,6 +2,10 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
 
+> **📋 For detailed project specifications, architecture, and development guidelines, see [PROJECT_SPEC.md](.github/PROJECT_SPEC.md)**
+> 
+> **🚀 For development progress and learning objectives, see [PROJECT_ROADMAP.md](PROJECT_ROADMAP.md)**
+
 ## Development server
 
 To start a local development server, run:
