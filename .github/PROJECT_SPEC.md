@@ -14,9 +14,10 @@ This file is the **master project specification** for the Angular E-Commerce app
 
 ## 🚀 Project Overview
 
-Build a production-style e-commerce application using **Angular** that demonstrates clean architecture, common design patterns, and best practices. The project should be interview-ready and deployable, with a working MVP completed within **2 weeks**.
+Build a production-ready, **enterprise-grade** e-commerce application using **Angular** that demonstrates clean architecture, industry design patterns, and professional best practices. This project is specifically designed to be **interview-ready and portfolio-worthy**, showcasing the skills expected in senior developer positions, with a working MVP completed within **2 weeks**.
 
 **MVP goals:** product catalog, product detail, shopping cart, authentication, checkout, and order history.  
+**Enterprise features:** ITCSS + BEM architecture, responsive design, TypeScript strict mode, professional testing coverage.  
 **Optional / Stretch:** admin dashboard, reviews, wishlist, NgRx state, SSR with Angular Universal.
 
 ---
@@ -66,11 +67,14 @@ Build a production-style e-commerce application using **Angular** that demonstra
 
 ## 🏗 Architecture Overview
 
+- **Clean Architecture** — Core/Shared/Features separation with enterprise-grade organization
+- **ITCSS + BEM** — 7-layer CSS architecture with Block Element Modifier naming conventions
 - **Core Module** — singleton services, guards, interceptors (AuthService, ProductService, CartService, OrderService, HttpInterceptor, AuthGuard)
 - **Shared Module** — reusable UI components (ProductCard, Navbar, Loader), pipes, directives
 - **Feature Modules** — domain modules lazy-loaded: Products, Cart, Auth, Checkout, Profile, Admin
 - **Services as Facades** — components interact with services; services handle API/logic
 - **RxJS** — reactive state with `BehaviorSubject` / Observables for cart & auth
+- **Enterprise Standards** — TypeScript strict mode, responsive design, cross-browser compatibility
 
 ---
 
@@ -182,6 +186,45 @@ ecommerce-app/
 ---
 
 ## 🛠 Key Concepts & Patterns
+
+### Enterprise Angular Patterns
+
+#### **🏗️ Component Architecture**
+
+- **Standalone Components**: Always use standalone components over NgModules
+- **OnPush Change Detection**: Set `changeDetection: ChangeDetectionStrategy.OnPush` for performance
+- **Signal-Based State**: Use `signal()`, `computed()`, and modern reactive primitives
+- **Input/Output Functions**: Use `input()` and `output()` functions instead of decorators
+- **Query Migration**: Use `viewChild()`, `contentChild()` instead of decorators
+
+#### **🎨 Template Best Practices**
+
+- **Modern Control Flow**: Use `@if`, `@for`, `@switch` instead of `*ngIf`, `*ngFor`, `*ngSwitch`
+- **Native Bindings**: Use `[style]` and `[class]` instead of `ngStyle` and `ngClass`
+- **Proper Tracking**: Always use proper `track` expressions in `@for` loops for performance
+- **Self-Closing Tags**: Use self-closing syntax `<component />` where appropriate
+
+#### **🔧 Service & Dependency Injection**
+
+- **Inject Function**: Use `inject()` function instead of constructor injection
+- **ProvidedIn Root**: Use `providedIn: 'root'` for singleton services
+- **Service Facades**: Services should hide implementation details and provide clean APIs
+- **Observable Patterns**: Return Observables from services, handle subscriptions in components
+
+#### **🛡️ Security & Performance**
+
+- **Static Security Attributes**: Never bind to security-sensitive attributes like `sandbox`
+- **Lazy Loading**: Implement lazy-loaded feature modules for performance
+- **Bundle Optimization**: Use self-closing tags and tree-shaking optimizations
+- **Memory Management**: Properly unsubscribe from Observables to prevent memory leaks
+
+#### **📋 Code Quality Standards**
+
+- **TypeScript Strict Mode**: Enable strict type checking and avoid `any`
+- **Consistent Return Types**: Use single return types in guards/resolvers
+- **Enum Usage**: Use enums/constants instead of string literals for routes and statuses
+- **Intermediate Constants**: Extract complex expressions into named constants
+- **Proper Comments**: Explain the "why" not the "what" in code comments
 
 ### Lazy Loading
 

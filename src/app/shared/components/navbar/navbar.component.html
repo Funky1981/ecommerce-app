@@ -1,0 +1,50 @@
+
+
+<nav class="navbar" [class.open]="isMenuOpen()">
+    <div class="navbar__container">        
+        <div class="navbar__brand">Gibbo's Store</div>
+        <button id="nav-toggle"
+                [attr.aria-expanded]="isMenuOpen()"
+                aria-label="Toggle navigation"
+                aria-controls="main-navigation"
+                
+                title="Navbar toggle menu"
+                class="navbar__hamburger"
+                (click)="toggleMenu()">
+                <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect y="4" width="24" height="2" fill="currentColor"/>
+                    <rect y="11" width="24" height="2" fill="currentColor"/>
+                    <rect y="18" width="24" height="2" fill="currentColor"/>
+                </svg>
+        </button>
+            <ul id="main-navigation" aria-labelledby="nav-toggle" [attr.aria-hidden]="!isMenuOpen()" class="navbar__nav">
+                <li><a class="navbar__link" 
+                        routerLink="/" 
+                        routerLinkActive="navbar__link--active"
+                        >Home
+                </a></li>
+                <li><a class="navbar__link" 
+                        routerLink="/about" 
+                        routerLinkActive="navbar__link--active"
+                        >About
+                </a></li>
+                <li><a class="navbar__link navbar__link--signup" 
+                        routerLink="/sign-up" 
+                        routerLinkActive="navbar__link--active"
+                        >Sign Up
+                </a></li>
+                <li><a class="navbar__link navbar__link--login" 
+                        routerLink="/login" 
+                        routerLinkActive="navbar__link--active"
+                        >Login
+                </a></li>
+                <li><a class="navbar__link" 
+                        routerLink="/contact" 
+                        routerLinkActive="navbar__link--active"
+                        >Contact Us
+                </a></li>
+            </ul>
+        <div aria-label="Shopping cart, {{cartItemCount}} items" class="navbar__cart-badge">{{cartItemCount}}</div>
+    </div>    
+</nav>
+

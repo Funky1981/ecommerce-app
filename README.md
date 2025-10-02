@@ -1,9 +1,22 @@
-# EcommerceApp
+# Angular E-Commerce - Enterprise Application
+
+**Enterprise-grade Angular e-commerce application built for interview showcase and portfolio demonstration.**
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
 
+## 🎯 Project Purpose
+
+This application demonstrates **professional Angular development skills** suitable for senior developer positions, featuring:
+
+- **Clean Architecture** with proper separation of concerns
+- **ITCSS + BEM** CSS architecture for scalable styling
+- **Modern Angular patterns** (standalone components, signals, reactive programming)
+- **Enterprise-grade code organization** and best practices
+- **Responsive design** with mobile-first approach
+- **Professional testing** and deployment practices
+
 > **📋 For detailed project specifications, architecture, and development guidelines, see [PROJECT_SPEC.md](.github/PROJECT_SPEC.md)**
-> 
+>
 > **🚀 For development progress and learning objectives, see [PROJECT_ROADMAP.md](PROJECT_ROADMAP.md)**
 
 ## Development server
