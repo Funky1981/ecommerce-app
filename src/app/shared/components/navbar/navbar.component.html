@@ -1,5 +1,3 @@
-
-
 <nav class="navbar" [class.open]="isMenuOpen()">
     <div class="navbar__container">        
         <div class="navbar__brand">Gibbo's Store</div>
@@ -19,32 +17,37 @@
         </button>
             <ul id="main-navigation" aria-labelledby="nav-toggle" [attr.aria-hidden]="!isMenuOpen()" class="navbar__nav">
                 <li><a class="navbar__link" 
+                        [class.navbar__link--mobile]="isMenuOpen()"
                         routerLink="/" 
                         routerLinkActive="navbar__link--active"
                         >Home
                 </a></li>
                 <li><a class="navbar__link" 
+                        [class.navbar__link--mobile]="isMenuOpen()"
                         routerLink="/about" 
                         routerLinkActive="navbar__link--active"
                         >About
                 </a></li>
-                <li><a class="navbar__link navbar__link--signup" 
+                <li><a class="navbar__link navbar__link--signup"
+                        [class.navbar__link--mobile]="isMenuOpen()"
                         routerLink="/sign-up" 
                         routerLinkActive="navbar__link--active"
                         >Sign Up
                 </a></li>
                 <li><a class="navbar__link navbar__link--login" 
+                        [class.navbar__link--mobile]="isMenuOpen()"
                         routerLink="/login" 
                         routerLinkActive="navbar__link--active"
                         >Login
                 </a></li>
                 <li><a class="navbar__link" 
+                        [class.navbar__link--mobile]="isMenuOpen()"
                         routerLink="/contact" 
                         routerLinkActive="navbar__link--active"
                         >Contact Us
                 </a></li>
             </ul>
-        <div aria-label="Shopping cart, {{cartItemCount}} items" class="navbar__cart-badge">{{cartItemCount}}</div>
+        <button aria-label="Shopping cart, {{cartItemCount}} items" class="navbar__cart-badge">{{cartItemCount}}</button>
     </div>    
 </nav>
 
