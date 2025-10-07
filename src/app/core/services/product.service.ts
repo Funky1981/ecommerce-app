@@ -7,20 +7,33 @@ import { HttpClient } from "@angular/common/http";
      providedIn: 'root'
 })
 export class ProductService {    
-    private cache = new Map<string, Product[]>();
+    private cache = new Map<string, Product|Product[]>();
     private apiUrl = 'https://fakestoreapi.com';
 
     constructor(private http: HttpClient) { }
 
-    getProducts(): Observable<Product[]> {        
-        if (this.cache.has('all')) {
-            return of(this.cache.get('all')!);
-            }
+    getProducts(): Observable<Product[]> {       
+        const cacheKey = 'all'; 
+        if (this.cache.has(cacheKey)) {
+            return of(this.cache.get(cacheKey) as Product[]); // Return cached data
+        }
         return this.http.get<Product[]>(`${this.apiUrl}/products`).pipe(
-            tap(products => this.cache.set('all', products))
+            tap(products => {
+                this.cache.set(cacheKey, products); // Cache the data
+                products.forEach(product => {
+                    this.cache.set(`product-${product.id}`, product);
+                });
+            })
+        );
+    }
+
+    getProductById(id: number): Observable<Product> {
+        const cacheKey = `product-${id}`;
+        if (this.cache.has(cacheKey)) {
+            return of(this.cache.get(cacheKey) as Product);
+        }
+        return this.http.get<Product>(`${this.apiUrl}/products/${id}`).pipe(
+            tap(product => this.cache.set(cacheKey, product))
         );
     }
 }
-        
-    
-
