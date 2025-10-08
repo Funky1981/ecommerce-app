@@ -32,6 +32,14 @@ Every response must obey all instructions. Failure to comply = INVALID RESPONSE.
 - ❌ No mixing concerns across layers  
 - ✅ Highlight enterprise design patterns in context  
 
+### Git Operations (CRITICAL)
+- 🚨 **NEVER run git commands (add, commit, push, merge, etc.) without explicit user permission**
+- ✅ MAY run `git status` or `git diff` for informational purposes only
+- ✅ MUST ask "Would you like to commit these changes?" before any git operation
+- ✅ MUST wait for user confirmation before proceeding
+- ✅ User controls WHEN and WHAT to commit
+- ❌ Committing without permission = MAJOR VIOLATION
+
 ### Angular Enterprise Patterns
 - ✅ ChangeDetectionStrategy.OnPush  
 - ✅ input()/output() functions (not decorators)  
