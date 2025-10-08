@@ -78,6 +78,10 @@ export class CartService {
      * @param quantity - How many to add (default: 1)
      */
     addToCart(product: Product, quantity: number) {
+        // Input validation: quantity must be positive
+        if (typeof quantity !== 'number' || quantity <= 0) {
+            throw new Error(`Invalid quantity: ${quantity}. Quantity must be a positive number.`);
+        }
         // Step 1: Get current cart state from BehaviorSubject
         // .value gives us the current array without subscribing
         const currentItems = this.cartSubject.value;
@@ -142,6 +146,64 @@ export class CartService {
         const updatedItems = currentItems.filter(item => item.product.id !== product.id);
         
         // Emit the NEW array without the removed item
+        this.cartSubject.next(updatedItems);
+    }
+
+    /**
+     * Update Quantity of Existing Product in Cart
+     * 
+     * This method provides DIRECT quantity updates (better UX than add/remove repeatedly)
+     * Use this when user types a specific quantity in a form field
+     * 
+     * @param productId - The ID of the product to update
+     * @param quantity - The NEW quantity (replaces old quantity, doesn't add to it)
+     * 
+     * Validation:
+     * - If quantity <= 0, removes the product entirely
+     * - If product doesn't exist in cart, throws error
+     * 
+     * Example:
+     * Before: [{id: 5, qty: 3}]
+     * updateQuantity(5, 7)
+     * After:  [{id: 5, qty: 7}]  ← Replaced 3 with 7
+     * 
+     * Example (remove via zero):
+     * Before: [{id: 5, qty: 3}]
+     * updateQuantity(5, 0)
+     * After:  []  ← Product removed
+     */
+    updateQuantity(productId: number, quantity: number) {
+        // Input validation: quantity must be a number
+        if (typeof quantity !== 'number') {
+            throw new Error(`Invalid quantity type: ${typeof quantity}. Quantity must be a number.`);
+        }
+
+        // Get current cart state
+        const currentItems = this.cartSubject.value;
+        
+        // Find the product in cart
+        const existingItem = currentItems.find(item => item.product.id === productId);
+        
+        // Error: Product not in cart
+        if (!existingItem) {
+            throw new Error(`Product with ID ${productId} not found in cart. Cannot update quantity.`);
+        }
+
+        // CASE 1: Quantity is zero or negative → Remove product
+        if (quantity <= 0) {
+            const updatedItems = currentItems.filter(item => item.product.id !== productId);
+            this.cartSubject.next(updatedItems);
+            return;
+        }
+
+        // CASE 2: Quantity is positive → Update quantity
+        // Use .map() to create NEW array with NEW objects (immutability)
+        const updatedItems = currentItems.map(item =>
+            item.product.id === productId
+                ? { ...item, quantity }  // Create NEW object with updated quantity
+                : item  // Keep other items unchanged
+        );
+        
         this.cartSubject.next(updatedItems);
     }
 
